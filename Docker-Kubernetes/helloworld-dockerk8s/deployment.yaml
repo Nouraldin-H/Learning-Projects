@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-dockerk8s-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: helloworld-dockerk8s-app
+  template:
+    metadata:
+      labels:
+        app: helloworld-dockerk8s-app
+    spec:
+      containers:
+      - name: helloworld-dockerk8s
+        image: nouraldinhassan/helloworld-dockerk8s:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
